@@ -1,23 +1,36 @@
     const triangleForm = document.querySelector('#triangleForm');
     const resultDiv = document.querySelector('#result');
+    const areaElement=document.querySelector("#area");
+    const textDiv=document.querySelector("#text");
 
-    triangleForm.addEventListener('submit', function (event) {
+
+    triangleForm.addEventListener('submit',  (event)=> {
         event.preventDefault();//to prevent submit button from reloading the whole page
 
         const side1 = parseFloat(document.querySelector('#side1').value);
         const side2 = parseFloat(document.querySelector('#side2').value);
         const side3 = parseFloat(document.querySelector('#side3').value);
+        
+         resultDiv.style.display="none";
+         textDiv.style.display="none";
 
         if (!isNaN(side1) && !isNaN(side2) && !isNaN(side3)) {
             if(isTriangle(side1,side2,side3)){
             const area = calculateTriangleArea(side1, side2, side3);
-            resultDiv.textContent = `The area of the triangle is: ${area.toFixed(2)} m²`;
+            //resultDiv.innerHTML = `The area of the triangle is: ${area.toFixed(2)} m²`;
+            areaElement.value=area.toFixed(2);
+            resultDiv.style.display="block";
+            areaElement.readOnly=true;
+
             }
             else{
-                resultDiv.textContent=`This is not a valid Triangle`;
+                textDiv.style.display="block";
+                textDiv.textContent=`This is not a valid Triangle`;
+                
             }
         } else {
-            resultDiv.textContent = 'Invalid input. Please enter valid numbers for all sides.';
+            textDiv.style.display="block";
+            textDiv.textContent = 'Invalid input. Please enter valid numbers for all sides.';
         }
     });
 

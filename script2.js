@@ -10,7 +10,14 @@
         const side1 = parseFloat(document.querySelector('#side1').value);
         const side2 = parseFloat(document.querySelector('#side2').value);
         const side3 = parseFloat(document.querySelector('#side3').value);
-        
+        const triangleSideA = document.querySelector('#triangleSideA');
+        const triangleSideB = document.querySelector('#triangleSideB');
+        const triangleSideC = document.querySelector('#triangleSideC');
+    
+        // Update the dimensions of the triangle sides based on user input
+        triangleSideA.textContent = `${side1}`;
+        triangleSideB.textContent = `${side2}`;
+        triangleSideC.textContent = `${side3}`;
          resultDiv.style.display="none";
          textDiv.style.display="none";
 
